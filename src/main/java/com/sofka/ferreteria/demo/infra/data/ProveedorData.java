@@ -1,15 +1,16 @@
 package com.sofka.ferreteria.demo.infra.data;
 
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 @Data
+@AllArgsConstructor
 @RequiredArgsConstructor
 @Document
+@Builder(toBuilder = true)
 public class ProveedorData {
 
     @Id

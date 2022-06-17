@@ -1,9 +1,11 @@
 package com.sofka.ferreteria.demo.domain;
 
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder(toBuilder = true)
 public class Producto {
 
     private String id;
