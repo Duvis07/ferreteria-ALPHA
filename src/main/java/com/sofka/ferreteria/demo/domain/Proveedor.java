@@ -1,14 +1,13 @@
 package com.sofka.ferreteria.demo.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
 @Data
 @Builder(toBuilder = true)
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class Proveedor {
 
     private String id;

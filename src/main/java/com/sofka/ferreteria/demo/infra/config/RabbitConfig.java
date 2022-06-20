@@ -14,8 +14,11 @@ public class RabbitConfig {
     public final static String EXCHANGE = "ferreteria.exchange";
 
     public final static String CREAR_PRODUCTO_QUEUE = "action.crear.producto";
+    public final static String AUMENTAR_PRODUCTO_QUEUE = "action.aumentar.producto";
+
 
     public final static String CREAR_PRODUCTO_ROUTINGKEY = "publish.product.create";
+    public final static String AUMENTAR_PRODUCTO_ROUTINGKEY = "publish.receipt";
 
 
     @Bean
@@ -24,13 +27,22 @@ public class RabbitConfig {
     }
 
     @Bean
-    public Queue getQueue(){
+    public Queue getCrearProductoQueue(){
         return new Queue(CREAR_PRODUCTO_QUEUE);
     }
 
     @Bean
+    public Queue getAumentarProductoQueue(){
+        return new Queue(AUMENTAR_PRODUCTO_QUEUE);
+    }
+
+    @Bean Binding bindAumentarProducto(){
+        return BindingBuilder.bind(getAumentarProductoQueue()).to(getTopicExchange()).with(AUMENTAR_PRODUCTO_ROUTINGKEY);
+    }
+
+    @Bean
     public Binding bindToCreateProduct(){
-        return BindingBuilder.bind(getQueue()).to(getTopicExchange()).with(CREAR_PRODUCTO_ROUTINGKEY);
+        return BindingBuilder.bind(getCrearProductoQueue()).to(getTopicExchange()).with(CREAR_PRODUCTO_ROUTINGKEY);
     }
 
 }

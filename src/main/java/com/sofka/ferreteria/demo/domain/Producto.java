@@ -11,7 +11,7 @@ public class Producto {
     private String id;
     private String fechaCreacion;
     private String nombre;
-    private String precio;
+    private double precio;
     private int unidadesDisponibles;
     private int maximoUnidades;
     private int minimoUnidades;
